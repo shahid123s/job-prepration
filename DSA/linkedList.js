@@ -9,6 +9,7 @@ class LinkedList {
     constructor (){
         this.head = null;
         this.size = 0;
+        this.last = null;
     }
 
 
@@ -20,14 +21,14 @@ class LinkedList {
     addEle(ele){
         this.size++
         if(this.head === null) {
-            return this.head = this.createNode(ele);
+            this.head = this.createNode(ele);
+            this.last = this.head;
+            return 
         }
-        let curr = this.head;
-        while(curr.next){
-            curr = curr.next;
-        }
+        let curr = this.last;
         curr.next = this.createNode(ele);
-
+        this.last = curr.next;
+        return 'added'
     }
     removeLastEle() {
         if(this.head === null) {
@@ -36,13 +37,16 @@ class LinkedList {
         }
         else if(this.head.next === null) {
             this.size--;
-            return this.head = null;
+            this.head = null;
+            this.last = null;
+            return 
         }
         let curr = this.head;
         while(curr.next.next){
             curr = curr.next
         }
         curr.next = null
+        this.last = curr;
         this.size --;
     }
 
