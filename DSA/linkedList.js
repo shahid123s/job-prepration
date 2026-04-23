@@ -73,3 +73,4 @@ class LinkedList {
 
 
 
+// Now time Complexity of the addEle is O(1) and removeEle is O(n);
